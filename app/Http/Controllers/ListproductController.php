@@ -4,19 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\product;
 use Illuminate\Contracts\Session\Session;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class ListproductController extends Controller
 {
     public function product()
     {
+       
         $products = product::paginate(6);
         return view('product', compact('products'))->with('id', (request()->input('page', 1) - 1) * 6);
     }
     public function detail($id)
     {
+        $product = Product::findOrFail($id);
+        $product->views++; // Tăng giá trị trường 'views' lên 1
+        $product->save();
         $products = product::find($id);
         if (!$products) {
             return redirect()->back()->with('error', 'Không tìm thấy sản phẩm');
@@ -74,6 +80,17 @@ class ListproductController extends Controller
             session()->flash('success', 'Sản phẩm đã được xóa khỏi giỏ hàng');
         }
     }
-   
-   
+    public function up()
+    {
+        Schema::table('products', function (Blueprint $table) {
+            $table->integer('views')->default(0);
+        });
+    }
+
+    public function down()
+    {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('views');
+        });
+    }
 }

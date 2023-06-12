@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->id()->autoIncrement();
             $table->string('name');
+            $table->integer('views')->default(0);
             $table->string('image')->nullable();
             $table->string('image1')->nullable();
             $table->string('image2')->nullable();

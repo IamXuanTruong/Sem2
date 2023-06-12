@@ -7,8 +7,11 @@ use Illuminate\Http\Request;
 use Hash;
 use Session;
 use App\Models\User;
+use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Cache;
+
 
 class CustomAuthController extends Controller
 {
@@ -88,7 +91,7 @@ class CustomAuthController extends Controller
         if (Auth::check()) {
             return view('homepage');
         }
-        return redirect('/login');
+        return redirect('login');
     }
 
     public function signOut()
@@ -97,5 +100,13 @@ class CustomAuthController extends Controller
         Auth::logout();
         return redirect('signup');
     }
-    
+
+    public function handle($request, Closure $next)
+    {
+        $visitors = Cache::get('visitors', 0); // Lấy giá trị số lượng người truy cập từ cache
+        $visitors++; // Tăng số lượng người truy cập lên 1
+        Cache::put('visitors', $visitors, 60); // Lưu giá trị số lượng người truy cập vào cache trong 60 phút
+
+        return $next($request);
+    }
 }

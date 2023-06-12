@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" type="image/x-icon"
         href="https://scontent.fhan2-5.fna.fbcdn.net/v/t39.30808-6/349728058_545265077755915_3344809737006389410_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=AFRQj_hf0-wAX_FlFhi&_nc_ht=scontent.fhan2-5.fna&oh=00_AfD8JWDwmBz81e0WnfhSYdZpzVPhv8nPnnpTto9888nFsQ&oe=647E64FB">
-    <title>Monster Coffee</title>
+    <title>Monster</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
@@ -32,7 +32,7 @@
     <header>
         <div class="header1">
             <div class="logo1">
-                <a href="{{route('homepage')}}"> <img
+                <a href="{{ route('homepage') }}"> <img
                         src="https://www.beeart.vn/uploads/file/images/blog/logo-quan-ca-phe/thiet-ke-logo-quan-ca-phe-bee-art-06.jpg"
                         alt=""></a>
             </div>
@@ -130,6 +130,7 @@
                     <div class="col-lg-6">
                         <h2>ĐĂNG KÝ NHẬN KHUYẾN MÃI</h2>
                         <p>Đừng bỏ lỡ những sản phẩm và chương trinh khuyến mãi hấp dẫn</p>
+
                     </div>
                     <div class="col-lg-6">
                         <div class="text-push">
@@ -160,7 +161,7 @@
                             <i class="fas fa-envelope"style="padding: 5px;"></i>
                             <i class="fab fa-tiktok"style="padding: 5px;"></i>
                         </div>
-
+                        <p>Số người truy cập hiện tại: {{ Cache::get('visitors', 0) }}</p>
                     </div>
                     <div class="col-lg-6">
                         <h6 style="color: rgb(232, 161, 67)">Hệ Thống Cửa Hàng</h6>
@@ -458,15 +459,15 @@
 </script>
 <script>
     document.getElementById('mySelect').addEventListener('change', function() {
-      var selectedValue = this.value;
-      var myDiv = document.getElementById('myDiv');
-    
-      if (selectedValue === 'option2') {
-        myDiv.style.display = 'block';
-      } else {
-        myDiv.style.display = 'none';
-      }
+        var selectedValue = this.value;
+        var myDiv = document.getElementById('myDiv');
+
+        if (selectedValue === 'option2') {
+            myDiv.style.display = 'block';
+        } else {
+            myDiv.style.display = 'none';
+        }
     });
-    </script>
-    
+</script>
+
 </html>

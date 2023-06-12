@@ -95,9 +95,14 @@
                                 <button class="btn btn-sm btn-secondary" onclick="increaseQuantity()">+</button>
                             </div>
                         </div>
-                        <a href="{{ route('add_to_cart', $products->id) }}" class="btn " role='button' style="background: #c19977;padding: 12px;margin-top: 15px;border-radius: 10px;font-weight: bold">Thêm vào giỏ hàng</a>
-                        <a href="{{ route('cart') }}" class="btn " role='button' style="background: #c19977;padding: 12px;margin-top: 15px;border-radius: 10px;font-weight: bold">Đặt Hàng Ngay</a>
+                        <a href="{{ route('add_to_cart', $products->id) }}" class="btn " role='button'
+                            style="background: #c19977;padding: 12px;margin-top: 15px;border-radius: 10px;font-weight: bold">Thêm
+                            vào giỏ hàng</a>
+                        <a href="{{ route('cart') }}" class="btn " role='button'
+                            style="background: #c19977;padding: 12px;margin-top: 15px;border-radius: 10px;font-weight: bold">Đặt
+                            Hàng Ngay</a>
                     </div>
+                    <p class="pt-2">Số lượt xem sản phẩm: {{ $products->views }}</p>
                     <div
                         style="padding: 10px;margin-top: 20px;border: 1px dashed chocolate;border-radius: 20px;width: 55%;font-size: 18px ">
                         <p>Nhập <span style="font-weight: bold">"Yeu Monster"</span></p>
