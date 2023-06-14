@@ -25,7 +25,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 </head>
 
 <body>
@@ -68,7 +67,6 @@
                             @foreach ((array) session('cart') as $id => $details)
                                 @php $total += $details['price']*$details['quantity'] @endphp
                             @endforeach
-
                         </div>
                         @if (session('cart'))
                             @foreach (session('cart') as $id => $details)
@@ -122,7 +120,6 @@
     @endif
     @yield('content')
     @yield('scripts')
-
     <footer>
         <div class="footer">
             <div class="past1">

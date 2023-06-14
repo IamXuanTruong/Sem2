@@ -103,9 +103,9 @@ class CustomAuthController extends Controller
 
     public function handle($request, Closure $next)
     {
-        $visitors = Cache::get('visitors', 0); // Lấy giá trị số lượng người truy cập từ cache
-        $visitors++; // Tăng số lượng người truy cập lên 1
-        Cache::put('visitors', $visitors, 60); // Lưu giá trị số lượng người truy cập vào cache trong 60 phút
+        $visitors = Cache::get('visitors', 0); 
+        $visitors++; 
+        Cache::put('visitors', $visitors, 60); 
 
         return $next($request);
     }

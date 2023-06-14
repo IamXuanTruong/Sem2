@@ -15,18 +15,17 @@
                     <div class="p-2 pb-4">
                         <i class="fas fa-envelope-square"></i>
                         <a href="" style="text-decoration: none"><span
-                                class="">dualeotheme@gmail.com</span></a>
+                            class="">dualeotheme@gmail.com</span></a>
                     </div>
                 </div>
                 <form action="{{ route('Lienhe') }}" method="POST">
                     @csrf
                     <input type="text" name="name" placeholder="Họ và tên" class="w-100 p-2 mt-3 mb-2"
-                        style="border-radius: 20px" value="{{Auth::user()->name}}">
+                        style="border-radius: 20px" value="{{ Auth::user()->name }}">
                     <input type="email" name="email" placeholder="Email" class="w-100 p-2 mt-3 mb-2"
-                        style="border-radius: 20px" value="{{Auth::user()->email}}">
+                        style="border-radius: 20px" value="{{ Auth::user()->email }}">
                     <textarea name="message" cols="30" rows="10" class="w-100 p-2 mt-3 mb-2" style="border-radius: 10px"
                         placeholder="Nội Dung:"></textarea>
-
                     <button class="btn btn-outline-danger mt-3 p-2" type="submit" style="border-radius: 20px">Gửi liên
                         hệ</button>
                 </form>
@@ -43,10 +42,12 @@
         @if (session('contactData'))
             <div class="alert alert-success">
                 <h4>Những góp ý và phản hồi đến từ khách hàng gần đây:</h4>
-                <p>Họ và tên: {{ session('contactData')['name'] }}</p>
-                <p>Email: {{ session('contactData')['email'] }}</p>
-                <p>Nội dung: {{ session('contactData')['message'] }}</p>
+                @foreach (session('contactData') as $key => $value)
+                    <p>{{ $key }}: {{ $value }}</p>
+                @endforeach
             </div>
         @endif
+
+
     </div>
 @endsection
